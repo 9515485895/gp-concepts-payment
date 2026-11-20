@@ -8,7 +8,10 @@ app.use(cors({ origin: true, methods: ["GET", "POST", "OPTIONS"], allowedHeaders
 app.use(express.json());
 
 const PORT = process.env.PORT || 10000;
-const CASHFREE_BASE_URL = "https://api.cashfree.com/pg";
+const CASHFREE_BASE_URL =
+  process.env.CASHFREE_ENVIRONMENT === "PRODUCTION"
+    ? "https://api.cashfree.com/pg"
+    : "https://sandbox.cashfree.com/pg";
 const CASHFREE_API_VERSION = "2025-01-01";
 
 const PLANS = {
